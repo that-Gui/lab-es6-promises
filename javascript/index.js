@@ -50,44 +50,60 @@ function foodPrep1(){
 // Iteration 2 - using promises
 
 obtainInstruction('steak', 0)
-  .then( (step0) => {document.querySelector("#steak").innerHTML += `<li>${step0}</li>`})
-    .then( (step2) => {document.querySelector("#steak").innerHTML += `<li>${step2}</li>`})
-    .then( (step3) => {document.querySelector("#steak").innerHTML += `<li>${step3}</li>`})
-    .then( (step4) => {document.querySelector("#steak").innerHTML += `<li>${step4}</li>`})
-    .then( (step5) => {document.querySelector("#steak").innerHTML += `<li>${step5}</li>`
-    document.querySelector("#steakImg").removeAttribute("hidden");})
+  .then( (white) => {document.querySelector("#steak").innerHTML += `<li>${white}</li>`; return obtainInstruction('steak', 1)})
+    .then( (pink) => {document.querySelector("#steak").innerHTML += `<li>${pink}</li>` ; return obtainInstruction('steak', 2)})
+    .then( (blue) => {document.querySelector("#steak").innerHTML += `<li>${blue}</li>` ; return obtainInstruction('steak', 3)})
+    .then( (orange) => {document.querySelector("#steak").innerHTML += `<li>${orange}</li>` ; return obtainInstruction('steak', 4)})
+    .then( (yellow) => {document.querySelector("#steak").innerHTML += `<li>${yellow}</li>` ; return obtainInstruction('steak', 5)})
+    .then( (bob) => {document.querySelector("#steak").innerHTML += `<li>${bob}</li>` ; return obtainInstruction('steak', 6)})
+    .then( (lol) => {document.querySelector("#steak").innerHTML += `<li>${lol}</li>` ; return obtainInstruction('steak', 7)})
+    .then( (red) => {document.querySelector("#steak").innerHTML += `<li>${red}</li>` ; document.querySelector("#steakImg").removeAttribute("hidden");})
  
 
 
 // Iteration 3 using async/await
-async function foodPrep3() {
+async function makeBroccoli() {
+  try {
+    await obtainInstruction('broccoli', 0){(step1) => {document.querySelector("#broccoli").innerHTML += `<li>${step1}</li>`;}};
+    await obtainInstruction('broccoli', 1){(step2) => {document.querySelector("#broccoli").innerHTML += `<li>${step2}</li>`;}};
+  } catch (error) {
+    console.log('error');
+  } 
+}
+
+/* async function foodPrep3() {
   
   try {
-    await  getInstruction("broccoli", 0, (step1) => {
-      document.querySelector("#broccoli").innerHTML += `<li>${step1}</li>`;
-    });
-    await getInstruction("broccoli", 1, (step2) => {
+    await  obtainInstruction("broccoli", 0) { 
+      (step1) => {document.querySelector("#broccoli").innerHTML += `<li>${step1}</li>`: };
+    await obtainInstruction("broccoli", 1, (step2) => {
       document.querySelector("#broccoli").innerHTML += `<li>${step2}</li>`;
     });
-    await getInstruction("broccoli", 2, (step3) => {
+    await obtainInstruction("broccoli", 2, (step3) => {
       document.querySelector("#broccoli").innerHTML += `<li>${step3}</li>`;
     });
-    await getInstruction("broccoli", 3, (step4) => {
+    await obtainInstruction("broccoli", 3, (step4) => {
       document.querySelector("#broccoli").innerHTML += `<li>${step4}</li>`;
     });
-    await getInstruction("broccoli", 4, (step5) => {
+    await obtainInstruction("broccoli", 4, (step5) => {
       document.querySelector("#broccoli").innerHTML += `<li>${step5}</li>`;
+    });
+    await obtainInstruction("broccoli", 5, (step6) => {
+      document.querySelector("#broccoli").innerHTML += `<li>${step6}</li>`;
+    });
+    await obtainInstruction("broccoli", 6, (step7) => {
+      document.querySelector("#broccoli").innerHTML += `<li>${step7}</li>`;
       document.querySelector("#broccoliImg").removeAttribute("hidden");
     });
     
   } catch(error) {
     console.log(error);
   } 
-}
+} */
 
 // Bonus 2 - Promise all
 // ...
 
 foodPrep1();
-//foodPrep2();
-foodPrep3();
+
+makeBroccoli();
